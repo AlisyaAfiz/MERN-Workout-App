@@ -101,6 +101,9 @@ div.error {
 input.error {
   border: 1px solid var(--error);
 }
+select.error {
+  border: 1px solid var(--error);
+}
 
 select {
   font-size: 15px;
