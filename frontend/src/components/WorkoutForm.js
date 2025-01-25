@@ -73,7 +73,7 @@ const WorkoutForm = () => {
         <option value="8">Vigorous (e.g., running, swimming)</option>
       </select>
 
-      <label>Duration: (in hours)</label>
+      <label>Duration (in hours):</label>
       <input 
         type="number" 
         onChange={(e) => setDuration(e.target.value)} 
