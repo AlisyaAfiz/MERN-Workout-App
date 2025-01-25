@@ -82,12 +82,11 @@ input {
 }
 form button {
   background: var(--primary);
-  border: 0;
+  border: 1;
   color: #ffffff;
   padding: 15px;
   margin-top: 10px;
   font-family: "Poppins";
-  border-width: 1;
   border-radius: 4px;
   cursor: pointer;
 }
