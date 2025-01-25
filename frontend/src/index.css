@@ -83,7 +83,8 @@ input {
 form button {
   background: var(--primary);
   border: 1;
-  color: #000000;
+  border-color: #dcdcdc;
+  color: #dcdcdc;
   padding: 15px;
   margin-top: 10px;
   font-family: "Poppins";
