@@ -82,8 +82,7 @@ input {
 }
 form button {
   background: var(--primary);
-  border: 1;
-  border-color: white;
+  border: 1px solid white;
   color: white;
   padding: 15px;
   margin-top: 10px;

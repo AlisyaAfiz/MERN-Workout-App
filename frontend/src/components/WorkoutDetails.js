@@ -25,10 +25,10 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="workout-details">
       <h4>{workout.title}</h4>
-      <p><strong>Weight:{'   '}</strong>{workout.weight}</p>
-      <p><strong>MET (Intensity of your exercise):{'   '}</strong>{workout.intensity}</p>
-      <p><strong>Duration (in hours):{'   '}</strong>{workout.duration}</p>
-      <p><strong>Calories Burned:{'   '}</strong>{calculateCalories()} kcal</p>
+      <p><strong>Weight: </strong>{workout.weight}</p>
+      <p><strong>MET (Intensity of your exercise): </strong>{workout.intensity}</p>
+      <p><strong>Duration (in hours): </strong>{workout.duration}</p>
+      <p><strong>Calories Burned: </strong>{calculateCalories()} kcal</p>
       <br></br>
       <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
