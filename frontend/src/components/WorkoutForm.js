@@ -68,7 +68,7 @@ const WorkoutForm = () => {
         className={emptyFields.includes('intensity') ? 'error' : ''}
       >
         <option value="" disabled>Select the intensity level</option>
-        <option value="3">Light (e.g., walking slowly)</option>
+        <option value="3">Light (e.g., walking)</option>
         <option value="5">Moderate (e.g., brisk walking, light cycling)</option>
         <option value="8">Vigorous (e.g., running, swimming)</option>
       </select>
