@@ -5,15 +5,16 @@ const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext()
 
   const [title, setTitle] = useState('')
-  const [load, setLoad] = useState('')
-  const [reps, setReps] = useState('')
+  const [weight, setWeight] = useState('')
+  const [intensity, setIntensity] = useState('')
+  const [duration, setDuration] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const workout = {title, load, reps}
+    const workout = {title, weight, intensity, duration}
     
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts`, {
       method: 'POST',
@@ -32,8 +33,9 @@ const WorkoutForm = () => {
       setEmptyFields([])
       setError(null)
       setTitle('')
-      setLoad('')
-      setReps('')
+      setWeight('')
+      setIntensity('')
+      setDuration('')
       dispatch({type: 'CREATE_WORKOUT', payload: json})
     }
 
@@ -51,20 +53,32 @@ const WorkoutForm = () => {
         className={emptyFields.includes('title') ? 'error' : ''}
       />
 
-      <label>Load (in kg):</label>
+      <label>Your current weight: (kg)</label>
       <input 
         type="number" 
-        onChange={(e) => setLoad(e.target.value)} 
-        value={load}
+        onChange={(e) => setWeight(e.target.value)} 
+        value={weight}
         className={emptyFields.includes('load') ? 'error' : ''}
       />
 
-      <label>Number of Reps:</label>
+      <label>MET (Intensity of your activity):</label>
+      <select 
+        onChange={(e) => setIntensity(e.target.value)} 
+        value={intensity} 
+        className={emptyFields.includes('intensity') ? 'error' : ''}
+      >
+        <option value="" disabled>Select your activity level</option>
+        <option value="3">Light (e.g., walking slowly)</option>
+        <option value="5">Moderate (e.g., brisk walking, light cycling)</option>
+        <option value="8">Vigorous (e.g., running, swimming)</option>
+      </select>
+
+      <label>Duration: (in hours)</label>
       <input 
         type="number" 
-        onChange={(e) => setReps(e.target.value)} 
-        value={reps}
-        className={emptyFields.includes('reps') ? 'error' : ''}
+        onChange={(e) => setDuration(e.target.value)} 
+        value={duration}
+        className={emptyFields.includes('duration') ? 'error' : ''}
       />
 
       <button>Add Workout</button>

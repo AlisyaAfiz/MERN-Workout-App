@@ -6,6 +6,11 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext()
 
+  const calculateCalories = () => {
+    const { weight, intensity, duration } = workout; 
+    return (intensity * weight * duration).toFixed(2);
+  };
+
   const handleClick = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts${workout._id}`, {
       method: 'DELETE'
@@ -20,8 +25,10 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="workout-details">
       <h4>{workout.title}</h4>
-      <p><strong>Load (kg): </strong>{workout.load}</p>
-      <p><strong>Number of reps: </strong>{workout.reps}</p>
+      <p><strong>Weight: </strong>{workout.weight}</p>
+      <p><strong>MET (Intensity of your exercise): </strong>{workout.intensity}</p>
+      <p><strong>Duration (in hours): </strong>{workout.duration}</p>
+      <p><strong>Calories Burned: </strong>{calculateCalories()} kcal</p>
       <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
