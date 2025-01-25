@@ -7,14 +7,19 @@ const workoutSchema = new Schema({
     type: String,
     required: true
   },
-  reps: {
+  weight: {
     type: Number,
     required: true
   },
-  load: {
+  intensity: { 
+    type: Number,
+    required: true
+  },
+  duration: {
     type: Number,
     required: true
   }
 }, { timestamps: true })
+
 
 module.exports = mongoose.model('Workout', workoutSchema)

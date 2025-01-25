@@ -3,7 +3,7 @@
 
 /* layout */
 :root {
-  --primary: #566cfc;
+  --primary: #96bdff;
   --error: #e7195a;
 }
 body {
@@ -83,7 +83,7 @@ input {
 form button {
   background: var(--primary);
   border: 0;
-  color: #000000;
+  color: #ffffff;
   padding: 10px;
   margin-top: 10px;
   font-family: "Poppins";

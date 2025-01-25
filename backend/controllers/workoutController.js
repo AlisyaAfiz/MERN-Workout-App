@@ -27,26 +27,30 @@ const getWorkout = async (req, res) => {
 
 // create a new workout
 const createWorkout = async (req, res) => {
-  const {title, load, reps} = req.body
+  const { title, weight, intensity, duration } = req.body // Updated variable names
 
   let emptyFields = []
 
   if (!title) {
     emptyFields.push('title')
   }
-  if (!load) {
-    emptyFields.push('load')
+  if (weight === undefined || weight === null) { // Checking if weight is provided
+    emptyFields.push('weight')
   }
-  if (!reps) {
-    emptyFields.push('reps')
+  if (intensity === undefined || intensity === null) { // Checking if intensity is provided
+    emptyFields.push('intensity')
   }
+  if (duration === undefined || duration === null) { // Checking if duration is provided
+    emptyFields.push('duration')
+  }
+  
   if (emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all fields', emptyFields })
   }
 
-  // add to the database
+  // Add to the database
   try {
-    const workout = await Workout.create({ title, load, reps })
+    const workout = await Workout.create({ title, weight, intensity, duration }) // Updated variable names
     res.status(200).json(workout)
   } catch (error) {
     res.status(400).json({ error: error.message })

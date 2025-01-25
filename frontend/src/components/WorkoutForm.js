@@ -61,7 +61,7 @@ const WorkoutForm = () => {
         className={emptyFields.includes('load') ? 'error' : ''}
       />
 
-      <label>MET (Intensity of your activity):</label>
+      <label>MET: (Intensity of your activity)</label>
       <select 
         onChange={(e) => setIntensity(e.target.value)} 
         value={intensity} 
@@ -73,7 +73,7 @@ const WorkoutForm = () => {
         <option value="8">Vigorous (e.g., running, swimming)</option>
       </select>
 
-      <label>Duration (in hours):</label>
+      <label>Duration: (in hours)</label>
       <input 
         type="number" 
         onChange={(e) => setDuration(e.target.value)} 
