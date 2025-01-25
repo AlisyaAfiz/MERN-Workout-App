@@ -82,13 +82,14 @@ input {
 }
 form button {
   background: var(--primary);
-  border: 1px solid white;
+  border: 2px solid white;
   color: white;
   padding: 15px;
   margin-top: 10px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
 }
 div.error {
   padding: 10px;
