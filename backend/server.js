@@ -3,14 +3,17 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
+const userRoutes = require('./routes/user')
+const cors = require('cors');
 
-// Require cors
-const cors = require("cors");
 // express app
 const app = express()
 
-// Allow requests from all origins (for development only)
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', 
+  methods: ['GET', 'POST', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'] 
+}));
 
 // middleware
 app.use(express.json())
@@ -22,16 +25,16 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/workouts', workoutRoutes)
+app.use('/api/user', userRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('connected to database')
-    // listen to port
+    // listen for requests
     app.listen(process.env.PORT, () => {
-      console.log('listening for requests on port', process.env.PORT)
+      console.log('connected to db & listening on port', process.env.PORT)
     })
   })
-  .catch((err) => {
-    console.log(err)
-  }) 
+  .catch((error) => {
+    console.log(error)
+  })
