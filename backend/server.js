@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express()
 
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: ['http://localhost:3000', '//mern-workout-app-2kin.onrender.com/']
   methods: ['GET', 'POST', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'] 
 }));
@@ -18,10 +18,9 @@ app.use(cors({
 // middleware
 app.use(express.json())
 
-app.use((req, res, next) => {
-  console.log(req.path, req.method)
-  next()
-})
+app.get('/', (req, res) => {
+  res.send('message');
+});
 
 // routes
 app.use('/api/workouts', workoutRoutes)
