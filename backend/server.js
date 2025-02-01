@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express()
 
 app.use(cors({
-  origin: ['http://localhost:3000', '//mern-workout-app-2kin.onrender.com/']
+  origin: ['http://localhost:3000', '//mern-workout-app-2kin.onrender.com/'],
   methods: ['GET', 'POST', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'] 
 }));
