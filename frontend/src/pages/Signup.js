@@ -1,15 +1,20 @@
 import {useState} from 'react'
 import {useSignup} from '../hooks/useSignup'
+import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {signup, error, isLoading} = useSignup()
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await signup(email, password)
+        const result = await signup(email, password);
+        if (result) {
+            history.push('/'); 
+        }
     }
 
     return (
