@@ -29,13 +29,14 @@ const Navbar = ({setSearch}) => {
                 onChange={handleSearch}
                 className="search-bar"
               />
-              <button type="submit" className="search-button">Search</button>
             </form>
           </div>
           )}
           <nav>
             {user && (
-              <Link to="/addworkouts">Add Workout</Link>
+              <Link to="/addworkouts">
+                <button className="nav-addworkouts">Add Workout</button>
+              </Link>
             )}
           {user && (
             <div>
