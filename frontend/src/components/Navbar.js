@@ -35,9 +35,7 @@ const Navbar = ({setSearch}) => {
           )}
           <nav>
             {user && (
-              <Link to="/addworkouts">
-                <button className="nav-addworkouts">Add Workout</button>
-              </Link>
+              <Link to="/addworkouts">Add Workout</Link>
             )}
           {user && (
             <div>
