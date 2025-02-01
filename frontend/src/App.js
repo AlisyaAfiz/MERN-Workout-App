@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 
@@ -9,16 +10,17 @@ import Navbar from './components/Navbar'
 
 function App() {
   const {user} = useAuthContext()
+  const [search, setSearch] = useState('')
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar setSearch={setSearch}/>
         <div className="pages">
           <Routes>
             <Route 
               path="/" 
-              element={user ? <Home /> : <Navigate to="/login"/>} 
+              element={user ? <Home search={search}/> : <Navigate to="/login"/>} 
             />
             <Route 
               path="/login" 

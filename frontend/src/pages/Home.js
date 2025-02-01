@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import WorkoutDetails from "../components/WorkoutDetails"
 import WorkoutForm from "../components/WorkoutForm"
 
-const Home = () => {
+const Home = ({search}) => {
   const { workouts, dispatch } = useWorkoutsContext()
   const {user} = useAuthContext()
 
@@ -27,14 +27,22 @@ const Home = () => {
       fetchWorkouts()
     }
 
-  }, [dispatch])
+  }, [dispatch, user])
+
+  const filteredWorkouts = workouts
+    ? workouts.filter((workout) => workout.title.toLowerCase().includes(search))
+    : [];
 
   return (
-    <div className="home">
+  <div className="home">
       <div className="workouts">
-        {workouts && workouts.map(workout => (
-          <WorkoutDetails workout={workout} key={workout._id} />
-        ))}
+        {filteredWorkouts.length > 0 ? (
+          filteredWorkouts.map(workout => (
+            <WorkoutDetails workout={workout} key={workout._id} />
+          ))
+        ) : (
+          <p>No workouts found</p>
+        )}
       </div>
       <WorkoutForm />
     </div>
