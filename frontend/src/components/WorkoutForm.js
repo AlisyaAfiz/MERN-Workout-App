@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext()
   const { user } = useAuthContext()
+  const navigate = useNavigate()
 
   const [title, setTitle] = useState('')
   const [weight, setWeight] = useState('')
@@ -45,13 +47,13 @@ const WorkoutForm = () => {
       setIntensity('')
       setDuration('')
       dispatch({type: 'CREATE_WORKOUT', payload: json})
+      navigate('/')
     }
 
   }
 
   return (
     <form className="create" onSubmit={handleSubmit}> 
-      <h3>Add a New Workout</h3>
 
       <label>Name of Exercise:</label>
       <input 
@@ -89,7 +91,7 @@ const WorkoutForm = () => {
         className={emptyFields.includes('duration') ? 'error' : ''}
       />
 
-      <button>Add Workout</button>
+      <button className="addworkout-button">Add Workout</button>
       {error && <div className="error">{error}</div>}
     </form>
   )

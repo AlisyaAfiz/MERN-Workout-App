@@ -34,10 +34,15 @@ const Navbar = ({setSearch}) => {
           </div>
           )}
           <nav>
+            {user && (
+              <Link to="/addworkouts">
+                <button className="nav-addworkouts">Add Workout</button>
+              </Link>
+            )}
           {user && (
             <div>
               <span>{user.email}</span>
-              <button onClick={handleClick}>Log out</button>
+              <button className="logout-button" onClick={handleClick}>Log out</button>
             </div>
           )}
           {!user && (
