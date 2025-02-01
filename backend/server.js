@@ -9,11 +9,13 @@ const cors = require('cors');
 // express app
 const app = express()
 
-app.use(cors({
-  origin: 'http://localhost:3000', 
-  methods: ['GET', 'POST', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization'] 
-}));
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' ? 'https://mern-frontend-o8kg.onrender.com' : 'http://localhost:3000',
+  methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 
 // middleware
 app.use(express.json())
